@@ -4,9 +4,8 @@ namespace FirstWebApiProj.Service.CharacterService
 {
     public interface ICharacterService
     {
-        List<Character> GetAllCharacters();
-        Character GetCharacterById(int id);
-
-        List<Character> AddCharacter(Character newCharacter);
+        Task<ServiceResponsive<List<Character>>> GetAllCharacters();
+        Task<ServiceResponsive<Character>> GetCharacterById(int id);
+        Task<ServiceResponsive<List<Character>>> AddCharacter(Character newCharacter);
     }
 }

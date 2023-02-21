@@ -11,21 +11,27 @@ namespace FirstWebApiProj.Service.CharacterService
             new Character{ Id=3, Name = "Hussain"},
             new Character{ Name = "Malik"}
         };
-        
-        public List<Character> AddCharacter(Character newCharacter)
+
+        public async Task<ServiceResponsive<List<Character>>> AddCharacter(Character newCharacter)
         {
+            ServiceResponsive<List<Character>> serviceResponsive = new ServiceResponsive<List<Character>>();
             characters.Add(newCharacter);
-            return characters;
+            serviceResponsive.Data = characters;
+            return serviceResponsive;
         }
 
-        public List<Character> GetAllCharacters()
+        public async Task<ServiceResponsive<List<Character>>> GetAllCharacters()
         {
-            return characters;
+            ServiceResponsive<List<Character>> serviceResponsive = new ServiceResponsive<List<Character>>();
+            serviceResponsive.Data = characters;
+            return serviceResponsive;
         }
 
-        public Character GetCharacterById(int id)
+        public async Task<ServiceResponsive<Character>> GetCharacterById(int id)
         {
-            return characters.FirstOrDefault(c => c.Id == id);
+            ServiceResponsive<Character> serviceResponsive = new ServiceResponsive<Character>();
+            serviceResponsive.Data = characters.FirstOrDefault(c => c.Id == id);
+            return serviceResponsive;
         }
     }
 }

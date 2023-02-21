@@ -18,26 +18,26 @@ namespace FirstWebApiProj.Controllers
 
         //[Route("getAll")]
         [HttpGet("getAll")] // this will also return the same as above
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_characterService.GetAllCharacters()); //OK is status code, it can be cannot found etc or anything else
+            return Ok(await _characterService.GetAllCharacters()); //OK is status code, it can be cannot found etc or anything else
         }
 
         // for single character
         [HttpGet("{id}")]
-        public IActionResult GetSingle(int id) // for getting the specific use by id
+        public async Task<IActionResult> GetSingle(int id) // for getting the specific use by id
         {
-            return Ok(_characterService.GetCharacterById(id)); //OK is status code, it can be cannot found etc or anything else
+            return Ok(await _characterService.GetCharacterById(id)); //OK is status code, it can be cannot found etc or anything else
         }
 
 
 
         // POST Operations
         [HttpPost]
-        public IActionResult AddCharacter(Character newCharacter)
+        public async Task<IActionResult> AddCharacter(Character newCharacter)
         {
             
-            return Ok(_characterService.AddCharacter(newCharacter));
+            return Ok(await _characterService.AddCharacter(newCharacter));
         }
     }
 }
